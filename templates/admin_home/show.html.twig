@@ -1,38 +1,67 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Home{% endblock %}
-
+{% block title %}
+    Home
+    
+{% endblock %}
 {% block body %}
+    <div class="d-flex justify-content-between py-3">
+        <a href="{{ path('app_admin_home_index') }}" class="btn btn-primary">Retour à la liste</a>
+        
+        <div class="d-flex">
+        {{ include('admin_home/_delete_form.html.twig') }}
+            <a href="{{ path('app_admin_home_edit', {'id': home.id}) }}" class="btn btn-success ms-2"><i class="fa-solid fa-pen"></i></a>
+        </div>
+    </div>   
+    
     <h1>Home</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ home.id }}</td>
+                <th>
+                    Id
+                                    
+                </th>
+                <td>
+                    {{ home.id }}
+                </td>
             </tr>
             <tr>
-                <th>Titre</th>
-                <td>{{ home.titre }}</td>
+                <th>
+                    Titre
+                                    
+                </th>
+                <td>
+                    {{ home.titre }}
+                </td>
             </tr>
             <tr>
-                <th>ImageName</th>
-                <td>{{ home.imageName }}</td>
+                <th>
+                    ImageName
+                                    
+                </th>
+                <td>
+                    <img src="{{ asset('images/' ~ home.imageName) }}" alt="{{ home.titre }}" class="img-fluid">
+                </td>
             </tr>
             <tr>
-                <th>Texte</th>
-                <td>{{ home.texte }}</td>
+                <th>
+                    Texte
+                                    
+                </th>
+                <td>
+                    {{ home.texte }}
+                </td>
             </tr>
             <tr>
-                <th>IsActive</th>
-                <td>{{ home.isActive ? 'Yes' : 'No' }}</td>
+                <th>
+                    IsActive
+                                    
+                </th>
+                <td>
+                    {{ home.isActive ? 'Yes' : 'No' }}
+                </td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_home_index') }}">back to list</a>
-
-    <a href="{{ path('app_admin_home_edit', {'id': home.id}) }}">edit</a>
-
-    {{ include('admin_home/_delete_form.html.twig') }}
 {% endblock %}

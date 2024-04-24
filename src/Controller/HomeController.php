@@ -14,7 +14,7 @@ class HomeController extends AbstractController
     {
         // Puisqu'il y a injection de dépendance en utilise l'objet représenté
         // par la variable $homeRepository pour aller chercher des données dans la BDD
-        $home = $homeRepository->findOneBy([ 'isActive' => true]);
+        $home = $homeRepository->findOneBy(['isActive' => true]); // true ou 1 marcherai également
         // on fait une die and dump pour voir ce que l'on récupère 
         // dd($home);
         // on déclenche le rendu de la vue associé à la route (index.html.twig du dossier home)

@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
 {% block title %}
     Hello HomeController!
+        
+    
 {% endblock %}
 {% block body %}
-{# {{ dump(laHome) }} #}
-    <h1>
-        {{ laHome.titre }}
-    </h1>
-    <img src="{{ asset('images/' ~ laHome.imageName) }}" alt="" class="img-fluid">
-        <p>
-        {{ laHome.texte }}
-        </p>
+    {# {{ dump(laHome) }} #}
+    <div class="text-center">
+        <h1>
+            {{ laHome.titre }}
+        </h1>
+        <img src="{{ asset('images/' ~ laHome.imageName) }}" alt="" class="img-fluid">
+            <p>
+                {{ laHome.texte }}
+            </p>
+        </div>
     {% endblock %}
     

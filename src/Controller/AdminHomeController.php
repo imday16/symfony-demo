@@ -25,17 +25,22 @@ class AdminHomeController extends AbstractController
     #[Route('/new', name: 'app_admin_home_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        // Instanciation d'une entité correspondant au formulaire que l'on veut mettre en oeuvre 
         $home = new Home();
+        // Création du formulaire en tant qu'objet et mise en relation de l'objet de formulaire 
+        // avec l'instance de l'entité
         $form = $this->createForm(HomeType::class, $home);
+        // On hydrate (remplir) le formulaire avec des données se trouvant dans la requête 
         $form->handleRequest($request);
-
+        // On vérifie si le formulaire est envoyé et s'il est valide (correctement rempli notamment sur le token sécurisé)
         if ($form->isSubmitted() && $form->isValid()) {
+            // On demande à l'entité manager d'enregister puis d'injecter les données dans la BDD 
             $entityManager->persist($home);
             $entityManager->flush();
-
+            // On redirige vers la liste 
             return $this->redirectToRoute('app_admin_home_index', [], Response::HTTP_SEE_OTHER);
         }
-
+        // Si le formulaire n'est pas envoyé alors on l'affiche 
         return $this->render('admin_home/new.html.twig', [
             'home' => $home,
             'form' => $form,
