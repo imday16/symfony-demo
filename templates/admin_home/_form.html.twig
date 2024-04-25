@@ -1,11 +1,17 @@
 {{ form_start(form) }}
 {# form_widget rend l'intégralité du formulaire lorsque le paramètre passé est le formulaire entier (ici form)
 cf AdminHomeController #}
-  {#  {{ form_widget(form) }} #}
-    {{ form_row(form.isActive) }}
-    {{ form_label(form.titre) }}
-    {{ form_widget(form.titre) }}
-    {{ form_errors(form.titre) }}
+{#  {{ form_widget(form) }} #}
+<div class="d-flex">   
+    <div class="w-25">
+       {{ form_row(form.isActive) }}
+    </div>
+    <div class="w-75">
+        {{ form_label(form.titre) }}
+        {{ form_widget(form.titre) }}
+        {{ form_errors(form.titre) }}
+    </div>
+</div> 
     {{ form_row(form.texte) }}
     {{ form_row(form.imageName) }}
     <button class="btn btn-success mb-3">{{ button_label|default('Sauvegarder') }}</button>
