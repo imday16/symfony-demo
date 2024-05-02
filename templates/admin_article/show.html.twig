@@ -1,30 +1,44 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Article{% endblock %}
-
+{% block title %}
+    Article
+{% endblock %}
 {% block body %}
-    <h1>Article</h1>
-
+    <div class="d-flex justify-content-between py-2">
+        <a href="{{ path('app_admin_article_index') }}" class="btn btn-primary">Retour à la liste</a>
+        <div class="d-flex">
+            <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}" class="btn btn-success"><i class="fa-solid fa-pen"></i></a>
+            {{ include('admin_article/_delete_form.html.twig') }}
+        </div>
+    </div>
+    <h1>
+        Article
+    </h1>
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
+                <th>
+                    Id
+                </th>
+                <td>
+                    {{ article.id }}
+                </td>
             </tr>
             <tr>
-                <th>Titre</th>
-                <td>{{ article.titre }}</td>
+                <th>
+                    Titre
+                </th>
+                <td>
+                    {{ article.titre }}
+                </td>
             </tr>
             <tr>
-                <th>Texte</th>
-                <td>{{ article.texte }}</td>
+                <th>
+                    Texte
+                </th>
+                <td>
+                    {{ article.texte }}
+                </td>
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('app_admin_article_index') }}">back to list</a>
-
-    <a href="{{ path('app_admin_article_edit', {'id': article.id}) }}">edit</a>
-
-    {{ include('admin_article/_delete_form.html.twig') }}
 {% endblock %}
